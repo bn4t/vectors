@@ -2,6 +2,16 @@ package main
 
 import "log"
 
+var data = []struct {
+	input  []float64
+	output float64
+}{
+	{[]float64{1, 1, 1}, 1},
+	{[]float64{1, 1, 0}, 1},
+	{[]float64{1, 0, 0}, 1},
+	{[]float64{0, 0, 0}, 0},
+}
+
 func main() {
 
 	a := []float64{1, 2, 3}
@@ -11,7 +21,7 @@ func main() {
 }
 
 func perceptron(x []float64, w []float64, b float64) float64 {
-	res := vecCalc(x, w) + b
+	res := dot(x, w) + b
 
 	return stepFunc(res)
 }
@@ -23,7 +33,7 @@ func stepFunc(v float64) float64 {
 	return 0
 }
 
-func vecCalc(a, b []float64) float64 {
+func dot(a, b []float64) float64 {
 	if len(a) != len(b) {
 		panic("Vectors must be of the same length")
 	}
