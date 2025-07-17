@@ -12,7 +12,24 @@ var data = []struct {
 	{[]float64{0, 0, 0}, 0},
 }
 
+var learningRate = 0.1
+
 func main() {
+
+	weights := []float64{1, 1, 1}
+	bias := 0.0
+
+	for _, v := range data {
+		yhat := perceptron(v.input, weights, bias)
+		epsilon := v.output - yhat
+
+		switch epsilon {
+		case 0:
+			continue
+		case 1:
+		case -1:
+		}
+	}
 
 	a := []float64{1, 2, 3}
 	w := []float64{4, 5, 6}
